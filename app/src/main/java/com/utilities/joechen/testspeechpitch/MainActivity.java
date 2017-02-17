@@ -1,5 +1,6 @@
 package com.utilities.joechen.testspeechpitch;
 
+import android.os.Build;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,8 +16,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 	SeekBar.OnSeekBarChangeListener, Button.OnClickListener
 {
 	private static final String			TAG = "TestSpeechPitch";
-	private static final String			CH  = "測試語音的語調";
-	private static final String			EN  = "Test the voice pitch";
+	private static final String			CH  = "現在正在測試語音的語調";
+	private static final String			EN  = "I try to say something, OK?";
 	private TextToSpeech				m_TTS;
 	private EditText					m_etPitchValue;
 	private SeekBar						m_sbPitchValue;
@@ -38,6 +39,15 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 		m_sbPitchValue.setProgress(50);
 		m_btnSayChinese.setOnClickListener(this);
 		m_btnSayEnglish.setOnClickListener(this);
+		/*
+		if(m_TTS.isLanguageAvailable(Locale.CHINESE) < 0 ||
+			m_TTS.isLanguageAvailable(Locale.TAIWAN) < 0 ||
+			m_TTS.isLanguageAvailable(Locale.TRADITIONAL_CHINESE) < 0)
+		{
+			m_btnSayChinese.setVisibility(View.INVISIBLE);
+			Log.d(TAG, "Does not support Chinese voice");
+		}
+		*/
     }
 
 	@Override
@@ -72,15 +82,29 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 	{
 		if(view.getId() == R.id.buttonSayChinese)
 		{
-			m_TTS.setLanguage(Locale.CHINESE);
+			m_TTS.setLanguage(Locale.TAIWAN);
 			m_TTS.setPitch(Float.parseFloat(m_etPitchValue.getText().toString()));
-			m_TTS.speak(CH, TextToSpeech.QUEUE_FLUSH, null);
+			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+			{
+				m_TTS.speak(CH, TextToSpeech.QUEUE_FLUSH, null, null);
+			}
+			else
+			{
+				m_TTS.speak(CH, TextToSpeech.QUEUE_FLUSH, null);
+			}
 		}
 		else if(view.getId() == R.id.buttonSayEnglish)
 		{
 			m_TTS.setLanguage(Locale.US);
 			m_TTS.setPitch(Float.parseFloat(m_etPitchValue.getText().toString()));
-			m_TTS.speak(EN, TextToSpeech.QUEUE_FLUSH, null);
+			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+			{
+				m_TTS.speak(EN, TextToSpeech.QUEUE_FLUSH, null, null);
+			}
+			else
+			{
+				m_TTS.speak(EN, TextToSpeech.QUEUE_FLUSH, null);
+			}
 		}
 	}
 }
