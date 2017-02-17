@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="Pitch"
         android:id="@+id/textView"/>
 
     <EditText
@@ -30,22 +30,12 @@
         android:text="1.00"/>
 
     <Button
-        android:text="Button"
+        android:text="Say English"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/button"
-        android:layout_alignParentEnd="true"/>
-
-    <Button
-        android:text="Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="11dp"
-        android:id="@+id/button2"
+        android:id="@+id/buttonSayEnglish"
         android:layout_alignParentEnd="true"/>
 
     <SeekBar
@@ -53,12 +43,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:id="@+id/seekBarPitchValue"
+        android:progressBackgroundTint="@android:color/darker_gray"
+        android:progressTint="@android:color/darker_gray"
         android:layout_below="@+id/editTextPitchValue"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:progressBackgroundTint="@android:color/background_light"
-        android:progressTint="@android:color/background_light"
-        android:progressTintMode="add"
+        android:max="100"
         />
+
+    <Button
+        android:text="說中文"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:id="@+id/buttonSayChinese"
+        android:layout_above="@+id/buttonSayEnglish"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>
