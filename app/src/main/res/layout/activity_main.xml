@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pitch"
+        android:text="@string/pitch"
         android:id="@+id/textView"/>
 
     <EditText

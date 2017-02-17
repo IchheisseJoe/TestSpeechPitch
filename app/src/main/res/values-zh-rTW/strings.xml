@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Google TTS 語調測試</string>
+    <string name="no_zh_tw">沒有安裝中文(臺灣)的TTS包</string>
+    <string name="pitch">語音語調</string>
+</resources>

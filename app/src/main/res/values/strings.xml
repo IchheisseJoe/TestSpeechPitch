@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">TestSpeechPitch</string>
+    <string name="app_name">Google TTS Pitch Test</string>
+    <string name="no_zh_tw">Cannot find Chinese(Taiwan) TTS package</string>
+    <string name="pitch">Voice Pitch</string>
 </resources>
